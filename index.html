@@ -215,18 +215,19 @@
     </div>
 
     <!-- Confirm Button -->
-    <button class="pay-btn" onclick="alert('পেমেন্ট কনফার্মেশনের জন্য টেলিগ্রামে মেসেজ দিন।')">
+    <button class="pay-btn" onclick="redirectToTelegram()">
       ✅ I HAVE PAID – NEXT
     </button>
 
     <!-- Telegram Link -->
     <br>
-    <a href="https://t.me/Rtmods" target="_blank" class="telegram-btn">📱 Contact on Telegram: @Rtmods</a>
+    <a href="https://t.me/Rtmods07" id="telegram-link" target="_blank" class="telegram-btn">📱 Contact on Telegram: @Rtmods07</a>
   </div>
 
   <script>
     let currentAmount = 30;
     const upiId = "6295268685@fam";
+    const telegramUsername = "Rtmods07";
 
     function selectPlan(hours, amount, element) {
       document.querySelectorAll('.plan-item').forEach(item => item.classList.remove('active'));
@@ -243,6 +244,10 @@
     function copyUPI() {
       navigator.clipboard.writeText(upiId);
       alert("UPI ID Copied: " + upiId);
+    }
+
+    function redirectToTelegram() {
+      window.open(`https://t.me/${telegramUsername}`, '_blank');
     }
   </script>
 
