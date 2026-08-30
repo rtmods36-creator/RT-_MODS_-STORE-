@@ -1,313 +1,250 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RT MODS ADMIN - Official Panel Store</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RT MODS ADMIN PANEL</title>
+  <style>
+    :root {
+      --bg-color: #0b0e14;
+      --card-bg: #131822;
+      --accent-color: #00f2fe;
+      --btn-purple: #7000ff;
+      --btn-green: #00e676;
+      --text-color: #ffffff;
+      --border-color: #212936;
+    }
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-        body {
-            background-color: #0d0f12;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: var(--card-bg);
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.1);
+      text-align: center;
+    }
 
-        header {
-            background: #15181e;
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #00ffcc;
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
-        }
+    .brand-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #ff3366;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(255, 51, 102, 0.4);
+    }
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #00ffcc;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+    .section-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: var(--accent-color);
+      margin-bottom: 15px;
+    }
 
-        .logo span {
-            color: #ff0055;
-        }
+    /* Plan Selection List */
+    .plan-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
 
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: 500;
-        }
+    .plan-item {
+      background: #0b0e14;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
 
-        nav a:hover {
-            color: #00ffcc;
-        }
+    .plan-item.active {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+    }
 
-        .hero {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(180deg, #15181e 0%, #0d0f12 100%);
-        }
+    .plan-info {
+      font-size: 15px;
+      font-weight: bold;
+    }
 
-        .hero h1 {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
+    .radio-circle {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid var(--border-color);
+    }
 
-        .hero h1 span {
-            color: #00ffcc;
-            text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
-        }
+    .plan-item.active .radio-circle {
+      border-color: var(--accent-color);
+      background-color: var(--accent-color);
+    }
 
-        .hero p {
-            color: #a0a0a0;
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto 25px;
-        }
+    .qr-box {
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 12px;
+      display: inline-block;
+      margin: 15px 0;
+    }
 
-        .telegram-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: #0088cc;
-            color: #ffffff;
-            padding: 12px 28px;
-            font-size: 16px;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 30px;
-            box-shadow: 0 0 15px rgba(0, 136, 204, 0.4);
-        }
+    .qr-box img {
+      width: 180px;
+      height: 180px;
+      display: block;
+    }
 
-        .telegram-btn:hover {
-            background: #00aaff;
-            transform: scale(1.05);
-        }
+    .upi-container {
+      background: #0b0e14;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            flex: 1;
-        }
+    .upi-id {
+      font-family: monospace;
+      font-size: 14px;
+      color: #e6edf3;
+    }
 
-        .section-title {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 40px;
-            color: #00ffcc;
-            text-transform: uppercase;
-        }
+    .copy-btn {
+      background: #1f6beb;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
+    }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
+    .instructions {
+      text-align: left;
+      font-size: 13px;
+      color: #8b949e;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
 
-        .card {
-            background: #15181e;
-            border: 1px solid #252932;
-            border-radius: 12px;
-            padding: 25px;
-            text-align: center;
-            transition: 0.3s;
-        }
+    .pay-btn {
+      width: 100%;
+      background: var(--btn-green);
+      color: #000;
+      border: none;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #00ffcc;
-            box-shadow: 0 5px 20px rgba(0, 255, 204, 0.15);
-        }
-
-        .card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
-
-        .price {
-            font-size: 30px;
-            font-weight: bold;
-            color: #00ffcc;
-            margin-bottom: 20px;
-        }
-
-        .features {
-            list-style: none;
-            margin-bottom: 25px;
-            color: #b0b0b0;
-            font-size: 14px;
-        }
-
-        .features li {
-            margin: 10px 0;
-        }
-
-        .btn {
-            display: inline-block;
-            width: 100%;
-            padding: 12px;
-            background: #00ffcc;
-            color: #0d0f12;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 6px;
-            text-transform: uppercase;
-        }
-
-        .btn:hover {
-            background: #00cca3;
-        }
-
-        footer {
-            background: #15181e;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 40px;
-            border-top: 1px solid #252932;
-            color: #707070;
-            font-size: 14px;
-        }
-
-        footer span {
-            color: #00ffcc;
-        }
-
-        .footer-contact {
-            margin-top: 15px;
-        }
-
-        footer a {
-            color: #00ffcc;
-            text-decoration: none;
-        }
-    </style>
+    .telegram-btn {
+      display: inline-block;
+      margin-top: 15px;
+      color: var(--accent-color);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  </style>
 </head>
-
 <body>
 
-    <header>
-        <div class="logo">RT MODS <span>ADMIN</span></div>
+  <div class="container">
+    <!-- Brand Title -->
+    <div class="brand-title">RT MODS ADMIN PANEL</div>
 
-        <nav>
-            <a href="#panels">Panels</a>
-            <a href="#contact">Contact Admin</a>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <h1>Welcome to <span>RT MODS ADMIN</span></h1>
-
-        <p>
-            Get high-performance, secure, and instant key panels directly from the admin.
-        </p>
-
-        <!-- FIXED TELEGRAM LINK -->
-        <a href="https://t.me/Rtmods07"
-           target="_blank"
-           class="telegram-btn">
-            Contact Admin on Telegram
-        </a>
-    </section>
-
-    <div class="container" id="panels">
-
-        <h2 class="section-title">Available Panels</h2>
-
-        <div class="grid">
-
-            <!-- VIP PANEL -->
-            <div class="card">
-                <h3>VIP PANEL</h3>
-
-                <div class="price">$10 / Month</div>
-
-                <ul class="features">
-                    <li>✔ High Performance</li>
-                    <li>✔ Anti-Ban Protection</li>
-                    <li>✔ Instant Key Delivery</li>
-                    <li>✔ 24/7 Support</li>
-                </ul>
-
-                <a href="https://t.me/Rtmods07"
-                   target="_blank"
-                   class="btn">
-                    Buy via Telegram
-                </a>
-            </div>
-
-            <!-- VVIP PANEL -->
-            <div class="card">
-                <h3>VVIP PANEL</h3>
-
-                <div class="price">$20 / Month</div>
-
-                <ul class="features">
-                    <li>✔ Maximum Security</li>
-                    <li>✔ All Features Unlocked</li>
-                    <li>✔ Auto Updates</li>
-                    <li>✔ Dedicated Server</li>
-                </ul>
-
-                <a href="https://t.me/Rtmods07"
-                   target="_blank"
-                   class="btn">
-                    Buy via Telegram
-                </a>
-            </div>
-
-            <!-- KEY GENERATOR -->
-            <div class="card">
-                <h3>KEY GENERATOR</h3>
-
-                <div class="price">$50 / Lifetime</div>
-
-                <ul class="features">
-                    <li>✔ Unlimited Keys</li>
-                    <li>✔ Full Reseller Access</li>
-                    <li>✔ Admin Dashboard</li>
-                    <li>✔ Priority Support</li>
-                </ul>
-
-                <a href="https://t.me/Rtmods07"
-                   target="_blank"
-                   class="btn">
-                    Buy via Telegram
-                </a>
-            </div>
-
-        </div>
+    <!-- Select Plan Section -->
+    <div class="section-title">SELECT PLAN</div>
+    <div class="plan-list">
+      <div class="plan-item active" onclick="selectPlan('1 HOURS', 30, this)">
+        <span class="plan-info">⚡ 1 HOURS — ₹30</span>
+        <div class="radio-circle"></div>
+      </div>
+      <div class="plan-item" onclick="selectPlan('3 HOURS', 70, this)">
+        <span class="plan-info">⚡ 3 HOURS — ₹70</span>
+        <div class="radio-circle"></div>
+      </div>
+      <div class="plan-item" onclick="selectPlan('6 HOURS', 130, this)">
+        <span class="plan-info">⚡ 6 HOURS — ₹130</span>
+        <div class="radio-circle"></div>
+      </div>
     </div>
 
-    <footer id="contact">
+    <!-- Payment Details -->
+    <div class="section-title">💳 SCAN & PAY</div>
 
-        <p>
-            Contact Owner Directly:
-            <a href="https://t.me/Rtmods07"
-               target="_blank">
-                @Rtmods07
-            </a>
-        </p>
+    <!-- QR Code -->
+    <div class="qr-box">
+      <img id="qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=6295268685@fam&pn=RTMODS&am=30" alt="UPI QR Code">
+    </div>
 
-        <div class="footer-contact">
-            &copy; 2026
-            <span>RT MODS ADMIN</span>.
-            All Rights Reserved.
-        </div>
+    <!-- UPI Copy Section -->
+    <div class="upi-container">
+      <span class="upi-id" id="upi-text">6295268685@fam</span>
+      <button class="copy-btn" onclick="copyUPI()">COPY</button>
+    </div>
 
-    </footer>
+    <!-- Instructions -->
+    <div class="instructions">
+      1. Scan QR or copy UPI ID<br>
+      2. Pay exact amount (<span id="pay-amount">₹30</span>)<br>
+      3. Save your Transaction ID (UTR)
+    </div>
+
+    <!-- Confirm Button -->
+    <button class="pay-btn" onclick="alert('পেমেন্ট কনফার্মেশনের জন্য টেলিগ্রামে মেসেজ দিন।')">
+      ✅ I HAVE PAID – NEXT
+    </button>
+
+    <!-- Telegram Link -->
+    <br>
+    <a href="https://t.me/Rtmods" target="_blank" class="telegram-btn">📱 Contact on Telegram: @Rtmods</a>
+  </div>
+
+  <script>
+    let currentAmount = 30;
+    const upiId = "6295268685@fam";
+
+    function selectPlan(hours, amount, element) {
+      document.querySelectorAll('.plan-item').forEach(item => item.classList.remove('active'));
+      element.classList.add('active');
+      currentAmount = amount;
+      
+      document.getElementById('pay-amount').innerText = "₹" + amount;
+      
+      // Dynamic QR Code Update
+      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=${upiId}&pn=RTMODS&am=${amount}`;
+      document.getElementById('qr-image').src = qrUrl;
+    }
+
+    function copyUPI() {
+      navigator.clipboard.writeText(upiId);
+      alert("UPI ID Copied: " + upiId);
+    }
+  </script>
 
 </body>
 </html>
