@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RT MODS STORE - BALA MOD PANEL</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background: #111827;
+            border: 2px solid #00f2fe;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0px 0px 20px rgba(0, 242, 254, 0.2);
+        }
+
+        .store-tag {
+            background: rgba(0, 242, 254, 0.1);
+            border: 1px dashed #00f2fe;
+            color: #00f2fe;
+            padding: 4px 12px;
+            font-size: 11px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 8px;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .badge-grid {
+            display: -webkit-flex;
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            background: #1f2937;
+            border: 1px solid #00f2fe;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: #00f2fe;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            width: 48%;
+            margin: 1%;
+        }
+
+        .plans {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .plan-card {
+            background: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 10px;
+            padding: 14px;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+            -webkit-align-items: center;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 12px;
+        }
+
+        .plan-card:hover, .plan-card.active {
+            border-color: #00f2fe;
+            background: rgba(0, 242, 254, 0.1);
+        }
+
+        .plan-info {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .plan-price {
+            font-size: 18px;
+            color: #00f2fe;
+            font-weight: bold;
+        }
+
+        .btn {
+            width: 100%;
+            background: #0072ff;
+            background: -webkit-linear-gradient(135deg, #00c6ff, #0072ff);
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: #fff;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .qr-box {
+            text-align: center;
+            background: #1f2937;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .qr-box img {
+            width: 210px;
+            height: 210px;
+            border-radius: 10px;
+            border: 2px solid #00f2fe;
+            background: #ffffff;
+            padding: 6px;
+        }
+
+        .upi-container {
+            width: 100%;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+            background: #111827;
+            border: 1px solid #00f2fe;
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-top: 12px;
+        }
+
+        .upi-text {
+            font-size: 14px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .copy-btn {
+            background: #00f2fe;
+            color: #000000;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 5px;
+            color: #9ca3af;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            background: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            color: #fff;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: #00f2fe;
+        }
+
+        .back-btn {
+            background: transparent;
+            color: #9ca3af;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div id="page1" class="page active">
+        <div class="header">
+            <span class="store-tag">RT MODS STORE</span>
+            <h1>BALA MOD PANEL</h1>
+            <p style="font-size: 12px; color: #9ca3af; margin-top: 5px;">PURCHASE KEY</p>
+        </div>
+
+        <div class="badge-grid" style="flex-wrap: wrap;">
+            <div class="badge"><i class="fa-solid fa-bolt" style="margin-right: 6px;"></i> MAIN ID SAFE</div>
+            <div class="badge"><i class="fa-solid fa-crosshairs" style="margin-right: 6px;"></i> HEADSHOT</div>
+            <div class="badge"><i class="fa-solid fa-location-dot" style="margin-right: 6px;"></i> LOCATION</div>
+            <div class="badge"><i class="fa-solid fa-shield-halved" style="margin-right: 6px;"></i> SAFE PAY</div>
+        </div>
+
+        <div class="plans">
+            <div class="plan-card active" onclick="selectPlan(this, '1 HOUR', 30)">
+                <div class="plan-info"><i class="fa-solid fa-bolt" style="color: #00f2fe; margin-right: 10px;"></i> 1 HOUR</div>
+                <div class="plan-price">₹30</div>
+            </div>
+            <div class="plan-card" onclick="selectPlan(this, '3 HOURS', 70)">
+                <div class="plan-info"><i class="fa-solid fa-bolt" style="color: #00f2fe; margin-right: 10px;"></i> 3 HOURS</div>
+                <div class="plan-price">₹70</div>
+            </div>
+            <div class="plan-card" onclick="selectPlan(this, '6 HOURS', 130)">
+                <div class="plan-info"><i class="fa-solid fa-bolt" style="color: #00f2fe; margin-right: 10px;"></i> 6 HOURS</div>
+                <div class="plan-price">₹130</div>
+            </div>
+        </div>
+
+        <button class="btn" onclick="goToPayment()">BUY NOW</button>
+    </div>
+
+    <div id="page2" class="page">
+        <button class="back-btn" onclick="showPage('page1')"><i class="fa-solid fa-arrow-left" style="margin-right: 5px;"></i> Back</button>
+        
+        <div class="header">
+            <span class="store-tag">RT MODS STORE</span>
+            <h2>SCAN & PAY</h2>
+            <p id="selected-plan-text" style="color: #00f2fe; margin-top: 5px; font-weight: bold;"></p>
+        </div>
+
+        <div class="qr-box">
+            <img id="qrCodeImg" src="" alt="Payment QR Code">
+            
+            <div class="upi-container">
+                <span class="upi-text" id="upiIdText">6295268685@fam</span>
+                <button class="copy-btn" onclick="copyUPI()"><i class="fa-regular fa-copy" style="margin-right: 5px;"></i> COPY</button>
+            </div>
+            <p style="margin-top: 10px; font-size: 13px; color: #9ca3af;">Scan QR or copy UPI ID to pay exact amount</p>
+        </div>
+
+        <button class="btn" onclick="goToManualOrder()">I HAVE PAID - NEXT</button>
+    </div>
+
+    <div id="page3" class="page">
+        <button class="back-btn" onclick="showPage('page2')"><i class="fa-solid fa-arrow-left" style="margin-right: 5px;"></i> Back</button>
+
+        <div class="header">
+            <span class="store-tag">RT MODS STORE</span>
+            <h2>COMPLETE ORDER</h2>
+            <p style="font-size: 12px; color: #9ca3af; margin-top: 5px;">Manual Order Verification</p>
+        </div>
+
+        <form id="orderForm" onsubmit="submitOrder(event)">
+            <div class="input-group">
+                <label>Selected Plan</label>
+                <input type="text" id="finalPlan" readonly style="color: #00f2fe; font-weight: bold;">
+            </div>
+
+            <div class="input-group">
+                <label>Your Bala Mod ID</label>
+                <input type="text" id="modId" placeholder="e.g. 1234567890" required>
+            </div>
+
+            <div class="input-group">
+                <label>Transaction ID / UTR Number</label>
+                <input type="text" id="utr" placeholder="12 digit UTR number from payment" required>
+            </div>
+
+            <button type="submit" class="btn"><i class="fa-paper-plane" style="margin-right: 5px;"></i> SEND ORDER VIA TELEGRAM</button>
+        </form>
+    </div>
+
+</div>
+
+<script>
+    var currentPlan = "1 HOUR";
+    var currentPrice = 30;
+    var myUpiId = "6295268685@fam";
+
+    function selectPlan(element, plan, price) {
+        var cards = document.querySelectorAll('.plan-card');
+        for (var i = 0; i < cards.length; i++) {
+            cards[i].classList.remove('active');
+        }
+        element.classList.add('active');
+        currentPlan = plan;
+        currentPrice = price;
+    }
+
+    function showPage(pageId) {
+        var pages = document.querySelectorAll('.page');
+        for (var i = 0; i < pages.length; i++) {
+            pages[i].classList.remove('active');
+        }
+        document.getElementById(pageId).classList.add('active');
+    }
+
+    function goToPayment() {
+        showPage('page2');
+        document.getElementById('selected-plan-text').innerText = "PLAN: " + currentPlan + " - ₹" + currentPrice;
+        var upiData = "upi://pay?pa=" + myUpiId + "&pn=RT_MODS_STORE&am=" + currentPrice + "&cu=INR";
+        var qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + encodeURIComponent(upiData);
+        document.getElementById('qrCodeImg').src = qrUrl;
+    }
+
+    function copyUPI() {
+        if(navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(myUpiId).then(function() {
+                alert("UPI ID Copied: " + myUpiId);
+            }).catch(function() {
+                promptUPI();
+            });
+        } else {
+            promptUPI();
+        }
+    }
+
+    function promptUPI() {
+        prompt("Copy UPI ID:", myUpiId);
+    }
+
+    function goToManualOrder() {
+        document.getElementById('finalPlan').value = currentPlan + " (₹" + currentPrice + ")";
+        showPage('page3');
+    }
+
+    function submitOrder(e) {
+        e.preventDefault();
+        var modId = document.getElementById('modId').value;
+        var utr = document.getElementById('utr').value;
+        var telegramAdmin = "Rtmods07"; 
+
+        var message = "🛒 New Order From RT MODS STORE!\n" +
+                        "----------------------------\n" +
+                        "Plan: " + currentPlan + " (₹" + currentPrice + ")\n" +
+                        "Bala Mod ID: " + modId + "\n" +
+                        "UTR / Trans ID: " + utr + "\n" +
+                        "----------------------------\n" +
+                        "Please approve the key!";
+
+        const telegramUrl = "https://t.me/" + telegramAdmin + "?text=" + encodeURIComponent(message);
+        window.location.href = telegramUrl;
+    }
+</script>
+</body>
+</html>
